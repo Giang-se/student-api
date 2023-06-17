@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class StudentService {
     @Autowired
@@ -27,6 +29,24 @@ public class StudentService {
                 .orElseThrow(() -> new StudentNotFoundException(request.getId()));
 
         modelMapper.map(request, student);
+        studentRepository.save(student);
+        return modelMapper.map(student, StudentResponse.class);
+    }
+
+    public StudentResponse updateStudentPartially(StudentManageRequest request) {
+        Student student = studentRepository.findById(request.getId())
+                .orElseThrow(() -> new StudentNotFoundException(request.getId()));
+
+        if (!Objects.isNull(request.getFirstName())) {
+            student.setFirstName(request.getFirstName());
+        }
+        if (!Objects.isNull(request.getLastName())) {
+            student.setLastName(request.getLastName());
+        }
+        if (!Objects.isNull(request.getStudentClass())) {
+            student.setStudentClass(request.getStudentClass());
+        }
+
         studentRepository.save(student);
         return modelMapper.map(student, StudentResponse.class);
     }
