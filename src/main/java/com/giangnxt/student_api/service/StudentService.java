@@ -1,4 +1,4 @@
-package com.giangnxt.studentapi.service;
+package com.giangnxt.student_api.service;
 
 import org.springframework.stereotype.Service;
 

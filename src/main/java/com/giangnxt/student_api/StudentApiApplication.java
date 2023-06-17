@@ -1,4 +1,4 @@
-package com.giangnxt.studentapi;
+package com.giangnxt.student_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

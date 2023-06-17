@@ -1,6 +1,6 @@
-package com.giangnxt.studentapi.controller;
+package com.giangnxt.student_api.controller;
 
-import com.giangnxt.studentapi.service.StudentService;
+import com.giangnxt.student_api.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

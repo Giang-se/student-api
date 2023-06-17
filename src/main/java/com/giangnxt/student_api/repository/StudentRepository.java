@@ -1,6 +1,6 @@
-package com.giangnxt.studentapi.repository;
+package com.giangnxt.student_api.repository;
 
-import com.giangnxt.studentapi.model.Student;
+import com.giangnxt.student_api.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

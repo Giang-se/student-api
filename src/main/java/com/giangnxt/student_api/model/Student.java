@@ -1,4 +1,4 @@
-package com.giangnxt.studentapi.model;
+package com.giangnxt.student_api.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
