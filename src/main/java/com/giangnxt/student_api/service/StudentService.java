@@ -1,5 +1,6 @@
 package com.giangnxt.student_api.service;
 
+import com.giangnxt.student_api.exception.StudentNotFoundException;
 import com.giangnxt.student_api.model.entity.Student;
 import com.giangnxt.student_api.model.request.StudentManageRequest;
 import com.giangnxt.student_api.model.response.StudentResponse;
@@ -27,6 +28,14 @@ public class StudentService {
 
         modelMapper.map(request, student);
         studentRepository.save(student);
+        return modelMapper.map(student, StudentResponse.class);
+    }
+
+    public StudentResponse deleteStudent(Long id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new StudentNotFoundException(id));
+
+        studentRepository.delete(student);
         return modelMapper.map(student, StudentResponse.class);
     }
 }

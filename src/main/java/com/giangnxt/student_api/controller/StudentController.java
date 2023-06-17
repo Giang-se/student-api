@@ -5,6 +5,8 @@ import com.giangnxt.student_api.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,5 +27,10 @@ public class StudentController {
     @PutMapping
     public ResponseEntity<?> updateStudent(@Valid @RequestBody StudentManageRequest request) {
         return ResponseEntity.ok().body(studentService.updateStudent(request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteStudent(@PathVariable Long id) {
+        return ResponseEntity.ok().body(studentService.deleteStudent(id));
     }
 }
