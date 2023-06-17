@@ -20,4 +20,13 @@ public class StudentService {
         studentRepository.save(student);
         return modelMapper.map(student, StudentResponse.class);
     }
+
+    public StudentResponse updateStudent(StudentManageRequest request) {
+        Student student = studentRepository.findById(request.getId())
+                .orElseThrow(() -> new StudentNotFoundException(request.getId()));
+
+        modelMapper.map(request, student);
+        studentRepository.save(student);
+        return modelMapper.map(student, StudentResponse.class);
+    }
 }

@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,5 +20,10 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<?> createStudent(@Valid @RequestBody StudentManageRequest request) {
         return ResponseEntity.ok().body(studentService.createStudent(request));
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateStudent(@Valid @RequestBody StudentManageRequest request) {
+        return ResponseEntity.ok().body(studentService.updateStudent(request));
     }
 }
