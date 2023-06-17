@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -63,5 +64,15 @@ public class StudentService {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException(id));
         return modelMapper.map(student, StudentResponse.class);
+    }
+
+    public void deleteStudents(List<Long> ids) {
+        ids.stream()
+                .forEach(id -> {
+                    Student student = studentRepository.findById(id)
+                            .orElseThrow(() -> new StudentNotFoundException(id));
+                    studentRepository.delete(student);
+                });
+
     }
 }

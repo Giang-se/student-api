@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -39,6 +41,12 @@ public class StudentController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteStudent(@PathVariable Long id) {
         return ResponseEntity.ok().body(studentService.deleteStudent(id));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteStudents(@RequestBody List<Long> ids) {
+        studentService.deleteStudents(ids);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
