@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -52,5 +53,14 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getStudent(@PathVariable Long id) {
         return ResponseEntity.ok().body(studentService.getStudent(id));
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<?> findStudent(
+            @RequestParam(name = "class", required = false) String studentClass,
+            @RequestParam(name = "firstName", required = false) String firstName,
+            @RequestParam(name = "lastName", required = false) String lastName
+    ) {
+        return ResponseEntity.ok().body(studentService.findStudent(studentClass, firstName, lastName));
     }
 }

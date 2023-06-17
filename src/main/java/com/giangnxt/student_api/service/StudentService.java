@@ -75,4 +75,15 @@ public class StudentService {
                 });
 
     }
+
+    public List<Student> findStudent(String studentClass, String firstName, String lastName) {
+        if(!Objects.isNull(studentClass))
+            return studentRepository.findByStudentClass(studentClass);
+        else if(!Objects.isNull(firstName))
+            return studentRepository.findByFirstName(firstName);
+        else if(!Objects.isNull(lastName))
+            return studentRepository.findByLastName(lastName);
+        else
+            return studentRepository.findAll();
+    }
 }
