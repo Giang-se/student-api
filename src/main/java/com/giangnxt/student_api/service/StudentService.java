@@ -38,4 +38,10 @@ public class StudentService {
         studentRepository.delete(student);
         return modelMapper.map(student, StudentResponse.class);
     }
+
+    public StudentResponse getStudent(Long id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new StudentNotFoundException(id));
+        return modelMapper.map(student, StudentResponse.class);
+    }
 }
