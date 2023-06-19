@@ -4,6 +4,7 @@ import com.giangnxt.student_api.model.request.StudentManageRequest;
 import com.giangnxt.student_api.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 public class StudentController {
+
     @Autowired
     private StudentService studentService;
 
     @PostMapping
     public ResponseEntity<?> createStudent(@Valid @RequestBody StudentManageRequest request) {
-        return ResponseEntity.ok().body(studentService.createStudent(request));
+        return ResponseEntity.status(HttpStatus.CREATED).body(studentService.createStudent(request));
     }
 
     @PutMapping
