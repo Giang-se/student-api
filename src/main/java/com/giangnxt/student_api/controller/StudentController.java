@@ -49,7 +49,7 @@ public class StudentController {
     @DeleteMapping
     public ResponseEntity<?> deleteStudents(@RequestBody List<Long> ids) {
         studentService.deleteStudents(ids);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
